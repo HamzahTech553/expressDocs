@@ -172,22 +172,60 @@ app.use(express.static('public'))
 //   })
   
 
-app.use((err, req, res, next) => {
-    console.error(err.stack)
-    res.status(500).send('Something broke!')
-  })
+// app.use((err, req, res, next) => {
+//     console.error(err.stack)
+//     res.status(500).send('Something broke!')
+//   })
   
 
+// app.response.sendStatus = function (statusCode, type, message) {
+//     // code is intentionally kept simple for demonstration purpose
+//     return this.contentType(type)
+//       .status(statusCode)
+//       .send(message)
+//   }
+  
+// app.get('/', (req, res, next) => {
+//     fs.readFile('/file-does-not-exist', (err, data) => {
+//       if (err) {
+//         next(err) // Pass errors to Express.
+//       } else {
+//         res.send(data)
+//       }
+//     })
+//   })
+
+// app.get('/' , (req , res) => {
+//     req.send('dddd')
+// })
 
 
+// app.get('/', (req, res) => {
+//     res.send('Hello World!')
+//   })
+  
 
-
-
-
-
-
-
-
+// app.get('/user/:id', async (req, res, next) => {
+//     const user = await getUserById(req.params.id)
+//     res.send(user)
+//   })
+  
+// app.get('/', (req, res, next) => {
+//     setTimeout(() => {
+//       try {
+//         throw new Error('BROKEN')
+//       } catch (err) {
+//         next(err)
+//       }
+//     }, 100)
+//   })
+  
+app.get('/', (req, res, next) => {
+    Promise.resolve().then(() => {
+      throw new Error('BROKEN')
+    }).catch(next) // Errors will be passed to Express.
+  })
+  
 
 
 
