@@ -7,11 +7,29 @@ const port = 3000
 
 app.use(express.static('public'))
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // app.get('/' , (req , res) => {
 //     res.send("hello express")
-// })
-
-
+// // })
+// app.locals.title = 'My App'
+// console.dir(app.locals.title)
 // app.post('/hello' , (req , res) => {
 //     res.send("post hello")
 // })
@@ -220,16 +238,29 @@ app.use(express.static('public'))
 //     }, 100)
 //   })
   
-app.get('/', (req, res, next) => {
-    Promise.resolve().then(() => {
-      throw new Error('BROKEN')
-    }).catch(next) // Errors will be passed to Express.
-  })
+// app.get('/', (req, res, next) => {
+//     Promise.resolve().then(() => {
+//       throw new Error('BROKEN')
+//     }).catch(next) // Errors will be passed to Express.
+//   })
   
 
+// app.get('/' ,  (req , res) => {
+//   res.send('hell')
+// })
 
+// app.del('/user/:id', (req, res) => {
+//   res.send(`DELETE /user/${req.params.id}`)
+// })
 
+// v5
+// app.delete('/user/:id', (req, res) => {
+//   res.send(`DELETE /user/${req.params.id}`)
+// })
 
+app.get('/' , (req , res) => {
+  res.send('hlelel')
+})
 
 
 
